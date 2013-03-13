@@ -26,6 +26,7 @@ within paragraphs will not.
 """
 
 import markdown
+import markdown.util
 
 # Global Vars
 SUPERSCRIPT_RE = r'(\^)([^\^]*)\2'  # the number is a superscript^2^
@@ -34,11 +35,11 @@ class SuperscriptPattern(markdown.inlinepatterns.Pattern):
     """ Return a superscript Element (`word^2^`). """
     def handleMatch(self, m):
         supr = m.group(3)
-        
+
         text = supr
-        
-        el = markdown.etree.Element("sup")
-        el.text = markdown.AtomicString(text)
+
+        el = markdown.util.etree.Element("sup")
+        el.text = mmarkdown.util.AtomicString(text)
         return el
 
 class SuperscriptExtension(markdown.Extension):
